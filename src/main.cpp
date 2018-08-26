@@ -7,6 +7,7 @@
 
 using std::cout;
 using std::endl;
+using std::cerr;
 using std::string;
 using std::vector;
 const string wav_ext=".wav";
@@ -16,7 +17,8 @@ using namespace pthread_raii;
 
 vector<string> filenames;
 string dirname;
-pmutex m;
+pmutex m_stack;
+pmutex m_io;
 
 void do_work() {
   while(true) {
@@ -24,19 +26,19 @@ void do_work() {
     
     {
       //access to the filenames stack is serialized with a mutex
-      plock_guard g(m);
+      plock_guard g(m_stack);
       if(filenames.empty())
 	return;
       filename=filenames.back();
       filenames.pop_back();
-      cout<<endl;
     }
 
     try {
       convert::convert(dirname+filename, dirname+filename.substr(0,filename.size()-wav_ext.size())+mp3_ext);
     }
     catch(std::runtime_error& e) {
-      std::cerr<<e.what()<<endl;
+      plock_guard g(m_io);
+      std::cerr<<"File "<<filename<<": "<<e.what()<<endl;
     }
   }
 }
