@@ -1,0 +1,6 @@
+*~
+*.gch
+test/*
+test_files/*
+obj/*
+wav2mp3
