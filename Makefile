@@ -1,7 +1,11 @@
 EXE = wav2mp3
 
 SRC_DIR = src
-LIB_DIR = lib
+ifeq ($(OS),Windows_NT)
+	LIB_DIR = lib/windows
+else
+	LIB_DIR = lib/linux
+endif
 OBJ_DIR = obj
 
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
