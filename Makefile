@@ -6,15 +6,13 @@ ifeq ($(OS),Windows_NT)
 else
 	LIB_DIR = lib/linux
 endif
-OBJ_DIR = obj
 
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
-OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+OBJ = $(SRC:$(SRC_DIR)/%.cpp=%.o)
 STATIC_LIBS = $(wildcard $(LIB_DIR)/*.a)
 
 CPPFLAGS += -Iinclude
 CFLAGS += -Wall
-LDFLAGS += -Llib
 LDLIBS += -lpthread
 
 CC = g++
@@ -26,7 +24,7 @@ all: $(EXE)
 $(EXE): $(OBJ)
 	$(CC) $(LDFLAGS) $^ $(STATIC_LIBS) $(LDLIBS) -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+%.o: $(SRC_DIR)/%.cpp
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 clean:
