@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cctype>
 #include "util.h"
 #include "pthread_raii.h"
 #include "convert.h"
@@ -43,6 +44,7 @@ void do_work() {
   }
 }
 
+
 int main(int argc, char** argv) {
   
   if(argc<2)
@@ -53,8 +55,8 @@ int main(int argc, char** argv) {
     dirname+=util::slash;
   
   int n_cores=util::num_cores();
-  
-  auto ends_with_wav=[](string s) { return wav_ext.size()<=s.size() && s.substr(s.size()-wav_ext.size())==wav_ext;};
+
+  auto ends_with_wav=[](string s) { return wav_ext.size()<=s.size() && util::string_to_lower(s.substr(s.size()-wav_ext.size()))==wav_ext;};
   util::list_files(dirname, filenames, ends_with_wav);
 
   vector<pthread> threads;

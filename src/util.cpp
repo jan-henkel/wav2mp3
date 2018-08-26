@@ -7,12 +7,14 @@
 
 #include <functional>
 #include <vector>
+#include <cctype>
 #include "util.h"
 
 namespace util {
   using std::vector;
   using std::string;
   using std::function;
+  using std::tolower;
 
 #if _WIN32
   char slash='\\';
@@ -66,5 +68,11 @@ namespace util {
     closedir(dirp);
   }
 #endif
+
+  string string_to_lower(string s) {
+    for(char& c:s)
+      c=tolower(c);
+    return s;
+  }
   
 }
