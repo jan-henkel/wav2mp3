@@ -11,7 +11,7 @@ SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(SRC:$(SRC_DIR)/%.cpp=%.o)
 STATIC_LIBS = $(wildcard $(LIB_DIR)/*.a)
 
-CPPFLAGS += -Iinclude -std=c++11
+CPPFLAGS += -Iinclude -std=c++11 -O2
 CFLAGS += -Wall
 LDLIBS += -lpthread
 
