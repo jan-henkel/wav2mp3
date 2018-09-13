@@ -49,7 +49,7 @@ void read_wave_riff_header(ifstream& file,riff_header& header) {
   file.read((char*)&header.id,4);
   file.read((char*)&header.chunk_size,4);
   file.read((char*)&header.format_id,4);
-  memory_layout::les_to_host(header.id,header.chunk_size,header.format_id);
+  memory_layout::le_to_host(header.chunk_size);
   if(header.id!=RIFF_ID || header.format_id!=WAV_FORMAT_ID) {
     throw runtime_error("Not a wave file");
   }
@@ -58,7 +58,7 @@ void read_wave_riff_header(ifstream& file,riff_header& header) {
 int read_subchunk_header(ifstream& file, subchunk_header& header) {
   file.read((char*)&header.id,4);
   file.read((char*)&header.chunk_size,4);
-  memory_layout::les_to_host(header.id,header.chunk_size);
+  memory_layout::le_to_host(header.chunk_size);
   return 8;
 }
 
