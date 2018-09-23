@@ -101,11 +101,11 @@ void check_support(const wav_t& wav) {
   else if(wav.format_code==WAVE_FORMAT_IEEE_FLOAT) {
     if(wav.block_sz==sizeof(float)) {
       if(!numeric_limits<float>::is_iec559)
-	throw runtime_error("Native float is not IEEE 754 compliant");
+        throw runtime_error("Native float is not IEEE 754 compliant");
     }
     else if(wav.block_sz==sizeof(double)) {
       if(!numeric_limits<double>::is_iec559)
-	throw runtime_error("Native double is not IEEE 754 compliant");
+        throw runtime_error("Native double is not IEEE 754 compliant");
     }
     else
       throw runtime_error("Wrong sample width for float PCM");
@@ -173,31 +173,31 @@ namespace convert {
     //case 1: PCM integer data
     if(wav.format_code==WAVE_FORMAT_PCM || wav.format_code==WAVE_FORMAT_ALAW) {
       if(wav.num_channels==1) {
-	if(wav.block_sz==sizeof(short))
-	  bytes_written=lame_encode_buffer(lgf.get(), (const short*)wav.data.get(), nullptr, wav.num_samples, mp3buffer.get(), mp3buffer_size);
-	else if(wav.block_sz==sizeof(int))
-	  bytes_written=lame_encode_buffer_int(lgf.get(), (const int*)wav.data.get(), nullptr, wav.num_samples, mp3buffer.get(), mp3buffer_size);
+        if(wav.block_sz==sizeof(short))
+          bytes_written=lame_encode_buffer(lgf.get(), (const short*)wav.data.get(), nullptr, wav.num_samples, mp3buffer.get(), mp3buffer_size);
+        else if(wav.block_sz==sizeof(int))
+          bytes_written=lame_encode_buffer_int(lgf.get(), (const int*)wav.data.get(), nullptr, wav.num_samples, mp3buffer.get(), mp3buffer_size);
       }
       else {
-	if(wav.block_sz==sizeof(short))
-	  bytes_written=lame_encode_buffer_interleaved(lgf.get(), (short*)wav.data.get(), wav.num_samples, mp3buffer.get(), mp3buffer_size);
-	else if(wav.block_sz==sizeof(int))
-	  bytes_written=lame_encode_buffer_interleaved_int(lgf.get(), (const int*)wav.data.get(), wav.num_samples, mp3buffer.get(), mp3buffer_size);
+        if(wav.block_sz==sizeof(short))
+          bytes_written=lame_encode_buffer_interleaved(lgf.get(), (short*)wav.data.get(), wav.num_samples, mp3buffer.get(), mp3buffer_size);
+        else if(wav.block_sz==sizeof(int))
+          bytes_written=lame_encode_buffer_interleaved_int(lgf.get(), (const int*)wav.data.get(), wav.num_samples, mp3buffer.get(), mp3buffer_size);
       }
     }
     //case 2: PCM IEEE float data
     else if(wav.format_code==WAVE_FORMAT_IEEE_FLOAT) {
       if(wav.num_channels==1) {
-	if(wav.block_sz==sizeof(float))
-	  bytes_written=lame_encode_buffer_ieee_float(lgf.get(), (const float*)wav.data.get(), nullptr, wav.num_samples, mp3buffer.get(), mp3buffer_size);
-	else if(wav.block_sz==sizeof(double))
-	  bytes_written=lame_encode_buffer_ieee_double(lgf.get(), (const double*)wav.data.get(), nullptr, wav.num_samples, mp3buffer.get(), mp3buffer_size);
+        if(wav.block_sz==sizeof(float))
+          bytes_written=lame_encode_buffer_ieee_float(lgf.get(), (const float*)wav.data.get(), nullptr, wav.num_samples, mp3buffer.get(), mp3buffer_size);
+        else if(wav.block_sz==sizeof(double))
+          bytes_written=lame_encode_buffer_ieee_double(lgf.get(), (const double*)wav.data.get(), nullptr, wav.num_samples, mp3buffer.get(), mp3buffer_size);
       }
       else {
-	if(wav.block_sz==sizeof(float))
-	  bytes_written=lame_encode_buffer_interleaved_ieee_float(lgf.get(), (const float*)wav.data.get(), wav.num_samples, mp3buffer.get(), mp3buffer_size);
-	else if(wav.block_sz==sizeof(double))
-	  bytes_written=lame_encode_buffer_interleaved_ieee_double(lgf.get(), (const double*)wav.data.get(), wav.num_samples, mp3buffer.get(), mp3buffer_size);
+        if(wav.block_sz==sizeof(float))
+          bytes_written=lame_encode_buffer_interleaved_ieee_float(lgf.get(), (const float*)wav.data.get(), wav.num_samples, mp3buffer.get(), mp3buffer_size);
+        else if(wav.block_sz==sizeof(double))
+          bytes_written=lame_encode_buffer_interleaved_ieee_double(lgf.get(), (const double*)wav.data.get(), wav.num_samples, mp3buffer.get(), mp3buffer_size);
       }
     }
   

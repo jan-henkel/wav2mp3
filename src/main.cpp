@@ -29,7 +29,7 @@ void do_work() {
       //access to the filenames stack is serialized with a mutex
       plock_guard g(m_stack);
       if(filenames.empty())
-	return;
+        return;
       filename=filenames.back();
       filenames.pop_back();
     }

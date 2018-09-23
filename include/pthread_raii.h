@@ -46,7 +46,7 @@ namespace pthread_raii {
     pthread(const pthread& other) = delete;
     ~pthread() {
       if(thread_) {
-	pthread_join(*thread_, nullptr);
+        pthread_join(*thread_, nullptr);
       }
     }
   private:

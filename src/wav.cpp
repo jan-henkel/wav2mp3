@@ -123,15 +123,15 @@ namespace wav {
     while(remaining>0 && (!fmt_found || !data_found)) {
       remaining-=read_subchunk_header(file, sub_hdr);
       if(sub_hdr.id==FMT_ID && !fmt_found) {
-	fmt_found=true;
-	remaining-=read_fmt_chunk(file, sub_hdr, fmt);
+        fmt_found=true;
+        remaining-=read_fmt_chunk(file, sub_hdr, fmt);
       }
       else if(sub_hdr.id==DATA_ID && !data_found) {
-	data_found=true;
-	remaining-=read_data_chunk(file,sub_hdr,data);
+        data_found=true;
+        remaining-=read_data_chunk(file,sub_hdr,data);
       }
       else {
-	remaining-=ignore_chunk(file,sub_hdr);
+        remaining-=ignore_chunk(file,sub_hdr);
       }
     }
   

@@ -45,9 +45,9 @@ namespace util {
     HANDLE hfind;
     if ((hfind = FindFirstFile(pat.c_str(), &fdata)) != INVALID_HANDLE_VALUE) {
       do {
-	string filename(fdata.cFileName);
-	if(predicate(filename))
-	  filenames.push_back(filename);
+        string filename(fdata.cFileName);
+        if(predicate(filename))
+          filenames.push_back(filename);
       } while (FindNextFile(hfind, &fdata) != 0);
       FindClose(hfind);
     }
@@ -61,8 +61,8 @@ namespace util {
     while ((dp = readdir(dirp)) != NULL) {
       string filename(dp->d_name);
       if(dp->d_type != DT_DIR) {
-	if(predicate(filename))
-	  filenames.push_back(filename);
+        if(predicate(filename))
+          filenames.push_back(filename);
       }
     }
     closedir(dirp);
