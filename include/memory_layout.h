@@ -68,6 +68,7 @@ namespace memory_layout {
     }
   }
 
+#pragma clang diagnostic ignored "-Wunused-value"
   template<typename... Args>
   void les_to_host(Args&... args) {
     using expand_type = int[];
