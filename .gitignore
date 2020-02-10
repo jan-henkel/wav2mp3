@@ -5,3 +5,8 @@ test_files/*
 obj/*
 wav2mp3
 wav2mp3.exe
+.vscode
+.clangd
+compile_flags.txt
+build/*
+!build/cmake_mingw_build.cmd
