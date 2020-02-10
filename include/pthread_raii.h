@@ -7,6 +7,7 @@
 #include <utility>
 
 namespace pthread_raii {
+  //! pthread mutex wrapper
   class pmutex {
   public:
     pmutex() {
