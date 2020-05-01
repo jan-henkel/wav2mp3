@@ -1,0 +1,1 @@
+python.exe D:/Programme/msys64/mingw64/share/clang/run-clang-tidy.py -header-filter='.*' -p build -fix
