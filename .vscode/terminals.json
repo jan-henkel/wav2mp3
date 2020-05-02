@@ -1,0 +1,25 @@
+{
+    "autorun": true,
+    "autokill": true,
+    "env": { "name": "value" }, 
+    "terminals": [
+      {
+        "name": "Git Bash",
+        "description": "A terminal that runs git bash",
+        "icon": "code",
+        "cwd": ".", 
+        "command": "D:/Programme/Git/bin/bash.exe"
+      },
+      {
+        "name": "VS2019 Developer Console",
+        "description": "A terminal that runs the Visual Studio 2019 developer console",
+        "icon": "code",
+        "cwd": ".", 
+        "commands": [
+          "Push-Location",
+          "Import-Module \"D:/Programme/Microsoft Visual Studio/2019/Community/Common7/Tools/Microsoft.VisualStudio.DevShell.dll\"; Enter-VsDevShell 2ff98821",
+          "Pop-Location"
+        ]
+      }
+    ]
+  }
