@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
-set(CMAKE_SH "CMAKE_SH-NOTFOUND")
-set(CMAKE_EXPORT_COMPILE_COMMANDS True)
-
+set(CMAKE_TOOLCHAIN_FILE toolchain_clang.cmake)
 project(wav2mp3 VERSION 1.0.0)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic")
+set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic")
+set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 add_subdirectory(src wav2mp3)
 target_include_directories(wav2mp3 PUBLIC include)

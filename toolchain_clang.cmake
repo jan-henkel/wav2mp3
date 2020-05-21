@@ -1,0 +1,5 @@
+set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_FLAGS "--target=x86_64-w64-windows-gnu --sysroot=D:/Programme/msys64/mingw64")
+set(CMAKE_C_FLAGS "--target=x86_64-w64-windows-gnu --sysroot=D:/Programme/msys64/mingw64")
+set(CMAKE_CXX_CLANG_TIDY clang-tidy)
